@@ -1,6 +1,8 @@
 // http://www.tinkerer.eu/AVRLib/SPI/
-// Following is for atmega8 or atmega168 in Master mode
+// Following is for atmega8...atmega328 in Master mode
 
+
+// SS pin onboard binaural board is DDB2
 
 #include "spi.h"
 #include <avr/io.h>
@@ -10,16 +12,20 @@
 #define DDR_SPI     DDRB
 #define DD_MISO     DDB4
 #define DD_MOSI     DDB3
-#define DD_SS       DDB2
+// #define DD_SS       DDB2 
 #define DD_SCK      DDB5
 
 
-void spi_init()
+void spi_init( )
 // Initialize pins for spi communication
 {
-    DDR_SPI &= ~((1<<DD_MOSI)|(1<<DD_MISO)|(1<<DD_SS)|(1<<DD_SCK));
+    // NOTE! NO slave select specified in this SPI library. Oh no, sir!
+    // NOTE! I think uint8_t is necessary? How does preprocessor know otherwise?
+    // uint8_t DD_SS = slave_select_address; // use with the bit address eg. DDB2
+ 
+    DDR_SPI &= ~((1<<DD_MOSI)|(1<<DD_MISO)|(1<<DD_SCK)); // clear only the addresses we will be using for SPI
     // Define the following pins as output
-    DDR_SPI |= ((1<<DD_MOSI)|(1<<DD_SS)|(1<<DD_SCK));
+    DDR_SPI |= ((1<<DD_MOSI)|(1<<DD_SCK));
    
     SPCR = ((1<<SPE)|               // SPI Enable
             (0<<SPIE)|              // SPI Interupt Enable
@@ -32,13 +38,14 @@ void spi_init()
     SPSR = (1<<SPI2X);              // Double Clock Rate
 }
 
+
 void spi_transfer_sync (uint8_t * dataout, uint8_t * datain, uint8_t len)
 // Shift full array through target device
 {
        uint8_t i;      
        for (i = 0; i < len; i++) {
              SPDR = dataout[i];
-             while((SPSR & (1<<SPIF))==0);
+             while(!(SPSR & (1<<SPIF))); // wait until transfer is completed. AVR datasheet.
              datain[i] = SPDR;
        }
 }
@@ -49,7 +56,7 @@ void spi_transmit_sync (uint8_t * dataout, uint8_t len)
        uint8_t i;      
        for (i = 0; i < len; i++) {
              SPDR = dataout[i];
-             while((SPSR & (1<<SPIF))==0);
+             while(!(SPSR & (1<<SPIF))); // wait until transfer is completed. AVR datasheet.
        }
 }
 
@@ -57,6 +64,14 @@ uint8_t spi_fast_shift (uint8_t data)
 // Clocks only one byte to target device and returns the received one
 {
     SPDR = data;
-    while((SPSR & (1<<SPIF))==0);
+    while(!(SPSR & (1<<SPIF)));
     return SPDR;
 }
+
+// uint8_t spi_fast_shift_two_bytes (uint8_t data)
+// // Clocks two bytes to target device and returns the received byte
+// {
+//     SPDR = data;
+//     while(!(SPSR & (1<<SPIF)));
+//     return SPDR;
+// }

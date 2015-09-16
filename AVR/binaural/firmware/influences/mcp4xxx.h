@@ -117,18 +117,18 @@ class MCP4XXX
 
     enum Address
     {
-        address_pot0_wiper = B0000
-      , address_pot1_wiper = B0001
-      , address_tcon       = B0100
-      , address_status     = B0101
+        address_pot0_wiper = B0000,
+        address_pot1_wiper = B0001,
+        address_tcon       = B0100,
+        address_status     = B0101
     };
     
     enum Command
     {
-        command_write      = B00
-      , command_read       = B11
-      , command_increment  = B01
-      , command_decrement  = B10
+        command_write      = B00,
+        command_read       = B11,
+        command_increment  = B01,
+        command_decrement  = B10
     };
 
     /**
