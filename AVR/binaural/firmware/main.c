@@ -5,9 +5,15 @@
  */
 
 #include <avr/io.h>
+#include "spi.h"
+#include "digipot_c.h"
+#include "optimized.h"
 
 int main(void)
 {
+    
+    spi_init();
+    
     /* insert your hardware initialization here */
     for(;;){
         /* insert your main loop code here */

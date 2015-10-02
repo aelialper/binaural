@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5E3F0802-57E7-4E02-8CC5-8628501AF158</string>
+	<key>IDESourceControlProjectName</key>
+	<string>binaural</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2417161914203F336F9393CCE4B781B3E11AC96D</key>
+		<string>https://github.com/aelialper/binaural.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AVR/binaural/binaural.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2417161914203F336F9393CCE4B781B3E11AC96D</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aelialper/binaural.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2417161914203F336F9393CCE4B781B3E11AC96D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2417161914203F336F9393CCE4B781B3E11AC96D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>binaural_beats</string>
+		</dict>
+	</array>
+</dict>
+</plist>

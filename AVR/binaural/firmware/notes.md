@@ -1,8 +1,6 @@
 
 ## Notes
 
-
-
 	* SPI mode for the digipot is in the spi_init() function among other things. CPOL & CPHA
 	
 	* You can disconnect the terminals of the ersistor network individually. TCON register. Might be good for energy saving

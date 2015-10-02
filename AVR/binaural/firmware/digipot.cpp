@@ -1,33 +1,35 @@
 
 #include <stdint.h>
-#include "digipot.h"
+#include "digipot_c.h"
 #include "spi.h"
 
-MCP43XX::MCP43XX( Pot pot, MemorySize memory_size, WiperConfiguration config )
-  : port_SS( port_SS ),
-  	pin_SS( pin_SS ),
-    pot_address(static_cast<Address>(pot)), // Cast the pot number to volatile wiper address
-    max_value(memory_size + config) // Potentiometer configurations allow "memory_size + 1" values, for setting the "full-scale" wiper position.
-{
- // Main program initializes the SPI,
-}
+//MCP43XX::MCP43XX( Pot pot, MemorySize memory_size, WiperConfiguration config )
+//  : port_SS( port_SS ),
+//  	pin_SS( pin_SS ),
+//    pot_address(static_cast<Address>(pot)), // Cast the pot number to volatile wiper address
+//    max_value(memory_size + config) // Potentiometer configurations allow "memory_size + 1" values, for setting the "full-scale" wiper position.
+//{
+// // Main program initializes the SPI,
+//}
+//
 
-byte MCP43XX::highByte(uint16_t uint16)
+
+static byte MCP43XX::highByte(uint16_t uint16)
 {
   return (byte)(uint16>>8);
 }
 
-byte MCP43XX::lowByte(uint16_t uint16)
+static byte MCP43XX::lowByte(uint16_t uint16)
 {
   return (byte)(uint16 & 0x00FF);
 }
 
-word MCP43XX::max_value(void) const
+static word MCP43XX::max_value(void) const
 {
   return m_max_value;
 }
 
-bool MCP43XX::increment(void)
+bool MCP43XX::digipot_increment(void)
 {
   return transfer(m_pot_address, command_increment);
 }
@@ -47,12 +49,12 @@ bool MCP43XX::get(word& value) const
   return transfer(m_pot_address, command_read, data_mask_word, value);
 }
 
-word MCP43XX::get(void) const
-{
-  word result = 0xFFFF;
-  get(result);
-  return result;
-}
+//word digipot_get(void) const
+//{
+//  word result = 0xFFFF;
+//  get(result);
+//  return result;
+//}
 
 // // toggleSS() replaces select() and deselect() because for now 
 // // there is no need to change SPI parameters for different slaves.
@@ -68,20 +70,20 @@ word MCP43XX::get(void) const
 // {
 //   digitalWrite(m_select_pin, HIGH);
 // }
-void MCP43XX::toggleSS(void) const
+static void MCP43XX::toggleSS(void) const
 {
 	// Replaces select() and deselect()
 	port_SS ^= 0x01U << pin_SS;
 }
 
-byte MCP43XX::build_command(Address address, Command command) const
+static byte MCP43XX::build_command(Address address, Command command) const
 {
   return ((address << 4) & address_mask)
        | ((command << 2) & command_mask)
        | cmderr_mask;
 }
 
-word MCP43XX::build_command(Address address, Command command, word data) const
+static word MCP43XX::build_command(Address address, Command command, word data) const
 {
   return (build_command(address, command) << 8)
        | (data & data_mask_word);

@@ -9,6 +9,12 @@
 /* Begin PBXFileReference section */
 		4079525E0CEA38CC00E202DC /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		4079525F0CEA38CC00E202DC /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		419749ED1BBE69F10060BF0A /* digipot_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = digipot_c.c; sourceTree = "<group>"; };
+		419749EF1BBE6A010060BF0A /* digipot_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digipot_c.h; sourceTree = "<group>"; };
+		41C4B1361BBE6755007FE8F5 /* spi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = spi.c; sourceTree = "<group>"; };
+		41C4B1371BBE6755007FE8F5 /* spi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spi.h; sourceTree = "<group>"; };
+		41C4B1381BBE6781007FE8F5 /* digipot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = digipot.cpp; sourceTree = "<group>"; };
+		41C4B1391BBE6781007FE8F5 /* digipot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digipot.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -22,6 +28,12 @@
 		4079525D0CEA38CC00E202DC /* firmware */ = {
 			isa = PBXGroup;
 			children = (
+				419749ED1BBE69F10060BF0A /* digipot_c.c */,
+				419749EF1BBE6A010060BF0A /* digipot_c.h */,
+				41C4B1381BBE6781007FE8F5 /* digipot.cpp */,
+				41C4B1391BBE6781007FE8F5 /* digipot.h */,
+				41C4B1361BBE6755007FE8F5 /* spi.c */,
+				41C4B1371BBE6755007FE8F5 /* spi.h */,
 				4079525F0CEA38CC00E202DC /* Makefile */,
 				4079525E0CEA38CC00E202DC /* main.c */,
 			);
@@ -50,9 +62,15 @@
 /* Begin PBXProject section */
 		4079523D0CEA382200E202DC /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 4079523E0CEA382200E202DC /* Build configuration list for PBXProject "TemplateProject" */;
+			attributes = {
+			};
+			buildConfigurationList = 4079523E0CEA382200E202DC /* Build configuration list for PBXProject "binaural" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 4079523B0CEA382200E202DC;
 			projectDirPath = "";
 			projectRoot = "";
@@ -67,6 +85,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 			};
 			name = Release;
 		};
@@ -80,7 +99,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4079523E0CEA382200E202DC /* Build configuration list for PBXProject "TemplateProject" */ = {
+		4079523E0CEA382200E202DC /* Build configuration list for PBXProject "binaural" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				407952400CEA382200E202DC /* Release */,
